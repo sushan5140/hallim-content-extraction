@@ -1,0 +1,100 @@
+/*
+ * Hallim design tokens — merge into your global stylesheet, or `@import`
+ * this file once from app/globals.css.
+ *
+ * One accent (celadon teal), used consistently everywhere it appears —
+ * primary actions, the level dropdown's active state, icon-grid glyphs,
+ * the promo banner, the Companion card's progress ring. No second hue.
+ */
+
+:root {
+  --hl-canvas: #f6f8f7;
+  --hl-surface: #ffffff;
+  --hl-ink: #12151a;
+  --hl-secondary: #5b6570;
+  --hl-muted: #8a929b;
+  --hl-hairline: rgba(18, 21, 26, 0.08);
+  --hl-hairline-strong: rgba(18, 21, 26, 0.14);
+
+  --hl-accent: #2f6f63;
+  --hl-accent-hover: #265a50;
+  --hl-accent-dark: #1a3c35;
+  --hl-accent-tint: #e3efec;
+  --hl-accent-ink: #1f4d44;
+
+  --hl-font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --hl-font-mono:
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Pretendard: the one UI family, chosen because it unifies Hangul and Latin
+   metrics — this screen renders Korean lesson titles/vocab next to English
+   UI copy constantly, and Inter+Noto-Sans-KR mismatches their x-heights. */
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2")
+    format("woff2-variations");
+}
+
+/* IBM Plex Mono: used narrowly, only for the stats-strip numbers and the
+   Companion card's progress percentage — a functional tabular-figure
+   treatment, not a second display face. */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5.0.8/files/ibm-plex-mono-latin-500-normal.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/@fontsource/ibm-plex-mono@5.0.8/files/ibm-plex-mono-latin-600-normal.woff2")
+    format("woff2");
+}
+
+.hallim-home {
+  font-family: var(--hl-font-sans);
+  background: var(--hl-canvas);
+  color: var(--hl-ink);
+}
+
+.hallim-home .hl-num {
+  font-family: var(--hl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.hallim-home a:focus-visible,
+.hallim-home button:focus-visible,
+.hallim-home summary:focus-visible {
+  outline: 2px solid var(--hl-accent);
+  outline-offset: 2px;
+}
+
+.hallim-home a,
+.hallim-home button {
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* winding roadmap path inside the Companion card */
+.hl-path-dash {
+  stroke-dasharray: 4 8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hallim-home *,
+  .hallim-home *::before,
+  .hallim-home *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
